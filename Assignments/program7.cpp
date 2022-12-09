@@ -1,6 +1,5 @@
 // # Assignment-7
 // # Implement BFS and DFS
-// # BFS
 #include <iostream>
 using namespace std;
 
