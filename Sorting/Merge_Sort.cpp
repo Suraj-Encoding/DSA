@@ -5,88 +5,93 @@
 #include <iostream>
 using namespace std;
 
-// # Global
-int *a, *b;
-
 // # Merge
-void Merge(int lb, int mid, int ub)
+void Merge(int *arr, int lb, int mid, int ub)
 {
     int i, j, k;
     i = lb;
     j = mid + 1;
     k = lb;
-    while (i <= mid && j < ub)
+    int b[10];
+    while (i <= mid && j <= ub)
     {
-        if (a[i] <= a[j])
+        if (arr[i] <= arr[j])
         {
-            b[k] = a[i];
+            b[k] = arr[i];
             i++;
         }
         else
         {
-            b[k] = a[j];
+            b[k] = arr[j];
             j++;
         }
         k++;
     }
-    if (i > mid)
+    while (j <= ub)
     {
-        while (j <= ub)
-        {
-            b[k] = a[j];
-            j++;
-            k++;
-        }
+        b[k] = arr[j];
+        j++;
+        k++;
     }
-    else
+    while (i <= mid)
     {
-        while (i <= mid)
-        {
-            b[k] = a[i];
-            i++;
-            k++;
-        }
+        b[k] = arr[i];
+        i++;
+        k++;
     }
+    // # Copy b to arr
+    for (k = lb; k <= ub; k++)
+        arr[k] = b[k];
 }
 
 // # Merge Sort
-void Merge_Sort(int lb, int ub)
+void Merge_Sort(int *arr, int lb, int ub)
 {
+    int mid;
     if (lb < ub)
     {
-        int mid = (lb + ub) / 2;
-        Merge_Sort(lb, mid);
-        Merge_Sort(mid + 1, ub);
-        Merge(lb, mid, ub);
+        mid = (lb + ub) / 2;
+        Merge_Sort(arr, lb, mid);
+        Merge_Sort(arr, mid + 1, ub);
+        Merge(arr, lb, mid, ub);
     }
+}
+
+// # Display Array
+void display(int *arr, int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        cout << arr[i] << " ";
 }
 
 // # Main Function
 int main()
 {
+    int *arr;
     int lb, ub, n, i;
     cout << "\n# Merge Sort #\n";
     cout << "\n# Enter array size: ";
     cin >> n;
-    a = new (nothrow) int[n];
-    b = new (nothrow) int[n];
+    arr = new int[n];
     lb = 0, ub = n - 1;
+
+    // # Enter array
     cout << "\n# Enter array: " << endl;
     for (i = 0; i < n; i++)
-        cin >> a[i];
+        cin >> arr[i];
+
+    // # Given array
     cout << "\n# Given array: " << endl;
-    for (i = 0; i < n; i++)
-        cout << a[i] << " ";
+    display(arr, n);
 
     // # Merge Sort
-    Merge_Sort(lb, ub);
-    for (i = lb; i <= ub; i++)
-        a[i] = b[i];
-    delete[] b;
+    Merge_Sort(arr, lb, ub);
 
+    // # Sorted array
     cout << "\n\n# Sorted array: " << endl;
-    for (i = 0; i < n; i++)
-        cout << a[i] << " ";
+    display(arr, n);
+
     cout << "\n\n";
     return 0;
 }
