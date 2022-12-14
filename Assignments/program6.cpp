@@ -12,6 +12,9 @@ struct Node
   int height;
 };
 
+// # Global
+int f = 1;
+
 // # getHeight
 int getHeight(struct Node *n)
 {
@@ -127,19 +130,112 @@ void Inorder(struct Node *root)
   }
 }
 
+// # Search
+struct Node *Search(struct Node *root, int key)
+{
+  if (root == NULL)
+  {
+    f = 0;
+    return NULL;
+  }
+  if (key == root->key)
+  {
+    f = 1;
+    return root;
+  }
+  else if (key < root->key)
+  {
+    return Search(root->left, key);
+  }
+  else
+  {
+    return Search(root->right, key);
+  }
+}
+
 // # Main
 int main()
 {
-  struct Node *root = NULL;
 
+  // # Construct AVL
+  cout << "\n\n# Height Balanced Tree -> AVL #\n";
+  struct Node *root = NULL;
   root = insert(root, 1);
   root = insert(root, 2);
-  root = insert(root, 4);
-  root = insert(root, 5);
-  root = insert(root, 6);
   root = insert(root, 3);
-  Inorder(root);
-  cout<<"\n";
-  
+  root = insert(root, 4);
+  root = insert(root, 8);
+  root = insert(root, 7);
+  root = insert(root, 6);
+  root = insert(root, 5);
+  root = insert(root, 11);
+  root = insert(root, 10);
+  root = insert(root, 12);
+
+  while (1)
+  {
+    cout << "\n# Menu:" << endl;
+    cout << "1.Insertion \n2.Search \n3.Inorder \n4.Display \n5.Exit" << endl;
+    cout << "Enter your chooice...";
+    int ch;
+    cin >> ch;
+    switch (ch)
+    {
+    case 1:
+    {
+      cout << "\n# Insertion: " << endl;
+      int key;
+      cout << "  Enter element to be Inserted: ";
+      cin >> key;
+      struct Node *n = Search(root, key);
+      if (f == 1)
+      {
+        cout << "  " << key << " is already present in AVL..!" << endl;
+      }
+      else
+      {
+        root = insert(root, key);
+        cout << "  " << key << " is inserted successfully..!" << endl;
+      }
+    }
+    break;
+
+    case 2:
+      cout << "\n# Search: " << endl;
+      {
+        int key;
+        cout << "  Enter element to be searched: ";
+        cin >> key;
+        struct Node *n = Search(root, key);
+        if (n != NULL)
+          cout << "  Found: " << n->key << endl;
+        else
+          cout << "  Element not found..!" << endl;
+      }
+      break;
+
+    case 3:
+      cout << "\n# Inorder: ";
+      Inorder(root);
+      cout << endl;
+      break;
+
+    case 4:
+      cout << "\n # Display: ";
+      cout << "\n  Inorder: ";
+      Inorder(root);
+      cout << endl;
+      break;
+
+    case 5:
+      cout << "\n* You are exit!\n\n";
+      exit(0);
+      break;
+
+    default:
+      cout << "\n* Inavlid Choice!\n";
+      break;
+    }
+  }
   return 0;
 }
