@@ -5,6 +5,7 @@
 using namespace std;
 #define V 5 // Vertices
 
+// # Minimum weight
 int minKey(int key[], bool mstSet[])
 {
     int min = INT_MAX, min_index;
@@ -12,18 +13,24 @@ int minKey(int key[], bool mstSet[])
     for (int v = 0; v < V; v++)
         if (mstSet[v] == false && key[v] < min)
             min = key[v], min_index = v;
-
     return min_index;
 }
 
-void printMST(int parent[], int graph[V][V])
+// # Print MST
+int printMST(int parent[], int graph[V][V])
 {
-    cout << "Edge \tWeight\n";
+    int wt = 0;
+    cout << "  Edge  |  Weight\n";
+    cout << "------------------\n";
     for (int i = 1; i < V; i++)
-        cout << parent[i] << " - " << i << " \t"
-             << graph[i][parent[i]] << " \n";
+    {
+        cout << "  " << parent[i] << " - " << i << "  |   " << graph[i][parent[i]] << " \n";
+        wt = wt + graph[i][parent[i]];
+    }
+    return wt;
 }
 
+// # Prims Algorithm
 void primMST(int graph[V][V])
 {
     int parent[V];
@@ -44,10 +51,12 @@ void primMST(int graph[V][V])
             if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
                 parent[v] = u, key[v] = graph[u][v];
     }
-    printMST(parent, graph);
+    int wt = printMST(parent, graph);
+    cout << "\n# Vertices = " << V << "\n\n# Edges = " << (V - 1) << "\n";
+    cout << "\n# Minimum weight of ST: " << wt << endl;
 }
 
-// # Main
+// # Main Function
 int main()
 {
     // # Graph
@@ -56,6 +65,9 @@ int main()
                        {0, 3, 0, 0, 7},
                        {6, 8, 0, 0, 9},
                        {0, 5, 7, 9, 0}};
+    cout << "\n# MST Implementation #" << endl;
+    cout << "\n# MST:\n\n ";
     primMST(graph);
+    cout << "\n";
     return 0;
 }
