@@ -1,0 +1,70 @@
+    # ------ Hashing Techniques ------ #
+
+    # Why to use ?
+    -> To search array element in O(1) time complexity.
+
+    # This is not a data structure.
+
+    # This is an algorithm/Technique on 'array' data structure.
+
+    # It makes searching faster.
+
+    # It is used to implement hashtable.
+
+    # Hashtable is a array of structure.
+    
+    # Hashing Technique: 
+        1. Division Method (✅)
+        2. Mid Square Method
+        3. Folding Method
+
+    # Collision Resolution Techniques:
+        1. Open Hashing (Closed Addressing)
+            - Seperate Chaining
+        2. Closed Hashing (Open Addressing)
+            - Linear Probing
+            - Quadratic Probing
+            - Double Hashing
+    
+    # Probe means Search.
+
+    # Most popular hashing technique is -> 'Division Method'
+
+    # Time complexity:
+           1.Searching:
+                 O(1) -> Best Case
+                 O(1) -> Avg Case
+                 O(n) -> Worst Case
+      
+           2.Insertion:
+                 O(1) -> Best Case
+                 O(1) -> Avg Case
+                 O(n) -> Worst Case
+            
+           3.Deletion:
+                 O(1) -> Best Case
+                 O(1) -> Avg Case
+                 O(n) -> Worst Case
+      
+           4.Display: -> O(n)
+          
+           5.Linear Probing:
+                 O(1) -> Best Case
+                 O(n) -> Avg Case
+                 O(n) -> Worst Case
+      
+           6.Quadratic Probing:
+                  O(1)   -> Best Case
+                 O(logn) -> Avg Case
+                 O(logn) -> Worst Case
+      
+           6.Double Hashing:
+                  O(1)   -> Best Case
+                 O(logn) -> Avg Case
+                 O(logn) -> Worst Case
+      
+           
+                 
+            
+        
+    

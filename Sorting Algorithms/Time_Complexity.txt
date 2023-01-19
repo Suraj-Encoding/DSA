@@ -1,0 +1,25 @@
+      ## --- Time Complexity --- ##
+ 
+ 1. Quick Sort
+       O(n^2)  -> Worst Case
+      O(nlogn) -> Best Case
+      O(nlogn) -> Avg Case
+
+ 2. Merge Sort
+      O(nlogn) -> Worst Case
+      O(nlogn) -> Best Case
+      O(nlogn) -> Avg Case
+
+ 3. Shell Sort
+       O(n^2) -> Worst Case
+       O(n^2) -> Avg Case
+        O(n)  -> Best Case
+
+ 4. Radix Sort
+       O(n^2) -> Worst Case
+       O(n^2) -> Avg Case
+        O(n)  -> Best Case
+
+
+
+

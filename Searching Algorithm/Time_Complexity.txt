@@ -1,0 +1,11 @@
+      ## --- Time Complexity --- ##
+ 
+ 1. Linear Search
+       O(1)     -> Best Case
+       O(n)     -> Worst case
+      O(n+1/2)  -> Avg Case
+
+ 2. Binary Search
+       O(1)    -> Best Case
+      O(logn)  -> Worst case
+      O(logn)  -> Avg Case
